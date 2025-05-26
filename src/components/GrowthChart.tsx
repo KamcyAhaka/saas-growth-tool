@@ -1,5 +1,5 @@
 
-import React from "react";
+
 import {
   Area,
   AreaChart,
@@ -29,7 +29,7 @@ interface GrowthChartProps {
   dataKeys: string[];
   colors?: string[];
   yAxisFormatter?: (value: number) => string;
-  tooltipFormatter?: (value: number) => [string, string];
+  tooltipFormatter?: (value: string | number) => [string, string];
   height?: number;
   stacked?: boolean;
   className?: string;
@@ -67,7 +67,7 @@ const GrowthChart = ({
               width={60}
             />
             <Tooltip
-              formatter={tooltipFormatter || ((value) => [String(value), ""])}
+              formatter={tooltipFormatter || ((value: unknown) => [String(value), ""])}
               contentStyle={{
                 borderRadius: "8px",
                 border: "none",
@@ -109,7 +109,7 @@ const GrowthChart = ({
               width={60}
             />
             <Tooltip
-              formatter={tooltipFormatter || ((value) => [String(value), ""])}
+              formatter={tooltipFormatter || ((value: string | number) => [String(value), ""])}
               contentStyle={{
                 borderRadius: "8px",
                 border: "none",
@@ -151,7 +151,7 @@ const GrowthChart = ({
               width={60}
             />
             <Tooltip
-              formatter={tooltipFormatter || ((value) => [String(value), ""])}
+              formatter={tooltipFormatter || ((value: string | number) => [String(value), ""])}
               contentStyle={{
                 borderRadius: "8px",
                 border: "none",
@@ -185,7 +185,7 @@ const GrowthChart = ({
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={height}>
-          {renderChart()}
+          {renderChart() || <div>No chart type selected</div>}
         </ResponsiveContainer>
       </CardContent>
     </Card>

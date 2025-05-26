@@ -1,5 +1,4 @@
 
-import React from "react";
 import {
   calculateActiveUsers,
   calculateMRR,
@@ -10,10 +9,10 @@ import {
   formatPercentage,
   formatDecimal,
 } from "@/utils/calculationUtils";
-import { CalculatorValues } from "./Calculator";
+import type { CalculatorValues } from "./Calculator";
 import MetricCard from "./MetricCard";
 import GrowthChart from "./GrowthChart";
-import { Users, DollarSign, TrendingUp, UserMinus, Wallet, LineChart } from "lucide-react";
+import { Users, DollarSign, TrendingUp, UserMinus, Wallet, } from "lucide-react";
 
 interface CalculatorResultsProps {
   values: CalculatorValues;
@@ -73,10 +72,7 @@ const CalculatorResults = ({ values }: CalculatorResultsProps) => {
     return previous === 0 ? 0 : ((current - previous) / previous) * 100;
   };
   
-  const userGrowthRate3Month = calculateGrowthRate(
-    activeUsers[2], 
-    activeUsers[0]
-  );
+
   
   const revenueGrowthRate3Month = calculateGrowthRate(
     monthlyMRR[2],
@@ -162,7 +158,7 @@ const CalculatorResults = ({ values }: CalculatorResultsProps) => {
         dataKeys={["Active Users", "Churned Users"]}
         colors={["#4361EE", "#EF4444"]}
         yAxisFormatter={(value) => `${Math.round(value / 1000)}k`}
-        tooltipFormatter={(value) => [formatNumber(value), "Users"]}
+        tooltipFormatter={(value) => [formatNumber(Number(value)), "Users"]}
         height={300}
       />
 
@@ -174,7 +170,7 @@ const CalculatorResults = ({ values }: CalculatorResultsProps) => {
         dataKeys={["Monthly Revenue"]}
         colors={["#06D6A0"]}
         yAxisFormatter={(value) => `$${Math.round(value / 1000)}k`}
-        tooltipFormatter={(value) => [formatCurrency(value), "Revenue"]}
+        tooltipFormatter={(value) => [formatCurrency(Number(value)), "Revenue"]}
         height={300}
       />
 
@@ -186,7 +182,7 @@ const CalculatorResults = ({ values }: CalculatorResultsProps) => {
         dataKeys={["Cumulative Revenue", "Cumulative CAC"]}
         colors={["#7209B7", "#EF4444"]}
         yAxisFormatter={(value) => `$${Math.round(value / 1000)}k`}
-        tooltipFormatter={(value) => [formatCurrency(value), ""]}
+        tooltipFormatter={(value) => [formatCurrency(Number(value)), ""]}
         height={300}
       />
 

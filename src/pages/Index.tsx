@@ -1,6 +1,6 @@
 
-import React, { useState } from "react";
-import Calculator, { CalculatorValues } from "@/components/Calculator";
+import { useState } from "react";
+import Calculator, { type CalculatorValues } from "@/components/Calculator";
 import CalculatorResults from "@/components/CalculatorResults";
 import { Separator } from "@/components/ui/separator";
 

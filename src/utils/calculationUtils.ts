@@ -12,7 +12,7 @@ export const calculateActiveUsers = (
   const signups = monthlyVisitors * (signupRate / 100);
   const initialActive = signups * (activationRate / 100);
   
-  let activeUsers: number[] = [initialActive];
+  const activeUsers: number[] = [initialActive];
   for (let i = 1; i < months; i++) {
     const retainedUsers = activeUsers[i - 1] * (retentionRate / 100);
     const newUsers = signups * (activationRate / 100);
