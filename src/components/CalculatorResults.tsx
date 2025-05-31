@@ -12,6 +12,7 @@ import {
 import type { CalculatorValues } from "./Calculator";
 import MetricCard from "./MetricCard";
 import GrowthChart from "./GrowthChart";
+import ExportButtons from "./ExportButtons";
 import { Users, DollarSign, TrendingUp, UserMinus, Wallet, } from "lucide-react";
 
 interface CalculatorResultsProps {
@@ -81,6 +82,8 @@ const CalculatorResults = ({ values }: CalculatorResultsProps) => {
 
   return (
     <div className="space-y-8 animate-fade-in">
+      <ExportButtons values={values} />
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Current Users */}
         <MetricCard

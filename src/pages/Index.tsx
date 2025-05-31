@@ -3,6 +3,7 @@ import { useState } from "react";
 import Calculator, { type CalculatorValues } from "@/components/Calculator";
 import CalculatorResults from "@/components/CalculatorResults";
 import { Separator } from "@/components/ui/separator";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   const [calculatedValues, setCalculatedValues] = useState<CalculatorValues | null>(null);
@@ -55,6 +56,8 @@ const Index = () => {
         <Separator className="mb-4" />
         <p>SaaS Growth Wizard — Your companion for SaaS business planning and forecasting</p>
       </footer>
+
+      <Toaster />
     </div>
   );
 };
